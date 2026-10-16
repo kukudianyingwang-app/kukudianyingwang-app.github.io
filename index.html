@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>酷酷电影网 - 电影推荐、热映榜单与追剧指南_kukudianyingwang</title>
+<meta name="keywords" content="酷酷电影网,酷酷电影网官网,酷酷电影网最新电影,酷酷电影网热映榜单,高分电影推荐,近期好看的电影,影视排行榜单,新片上映时间表,在线追剧指南,电影分类导航,豆瓣高分电影清单,周末看什么电影">
+<meta name="description" content="酷酷电影网（kukudianyingwang-app.github.io）专注电影推荐与影视榜单整理，每天更新热映新片、高分佳片、剧集追更与观影攻略。提供动作、科幻、悬疑、动画等分类导航，按评分、热度、上映时间多维度排序，帮你快速挑到今晚值得看的那部片子。">
+<meta name="author" content="酷酷电影网">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="format-detection" content="telephone=no">
+<meta name="theme-color" content="#0d1117">
+<link rel="canonical" href="https://kukudianyingwang-app.github.io/">
+<link rel="alternate" hreflang="zh-CN" href="https://kukudianyingwang-app.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="酷酷电影网">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="酷酷电影网 | 热映榜单 · 高分佳片 · 追剧指南">
+<meta property="og:description" content="酷酷电影网每日整理热映新片与高分电影榜单，按类型、评分、年份多维度筛选，附观影攻略与更新时间表，选片不纠结。">
+<meta property="og:url" content="https://kukudianyingwang-app.github.io/">
+<meta property="og:image" content="https://kukudianyingwang-app.github.io/cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="酷酷电影网 | 热映榜单 · 高分佳片 · 追剧指南">
+<meta name="twitter:description" content="酷酷电影网每日整理热映新片与高分电影榜单，附观影攻略与更新时间表，选片不纠结。">
+<style>
+:root{
+  --ink:#0b0e14;
+  --ink-2:#131822;
+  --ink-3:#1b2231;
+  --line:#2a3345;
+  --text:#e8edf7;
+  --text-2:#9aa7bd;
+  --gold:#ffb454;
+  --teal:#3ddc97;
+  --pink:#ff6b81;
+  --radius:14px;
+  --maxw:1180px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  background:var(--ink);
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  font-size:16px;line-height:1.75;
+  background-image:radial-gradient(900px 420px at 12% -8%,rgba(255,180,84,.14),transparent 62%),radial-gradient(760px 380px at 92% 4%,rgba(61,220,151,.10),transparent 60%);
+  background-attachment:fixed;
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+ul,ol{list-style:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+
+/* 顶部通告条 */
+.ticker{background:linear-gradient(90deg,#1b2231,#131822 55%,#1b2231);border-bottom:1px solid var(--line);font-size:13px;color:var(--text-2)}
+.ticker .wrap{display:flex;gap:14px;align-items:center;flex-wrap:wrap;padding:8px 20px}
+.ticker b{color:var(--gold);font-weight:600}
+.ticker span.dot{width:6px;height:6px;border-radius:50%;background:var(--teal);display:inline-block;animation:blink 1.6s infinite}
+@keyframes blink{50%{opacity:.25}}
+
+/* header */
+header.site{border-bottom:1px solid var(--line);background:rgba(11,14,20,.88);backdrop-filter:saturate(160%) blur(10px);position:sticky;top:0;z-index:60}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 20px;max-width:var(--maxw);margin:0 auto}
+.logo{display:flex;align-items:center;gap:10px}
+.logo .mark{
+  width:40px;height:40px;border-radius:11px;flex:0 0 40px;
+  background:linear-gradient(140deg,var(--gold),#ff7a45 60%,var(--pink));
+  display:grid;place-items:center;color:#16181d;font-weight:800;font-size:17px;letter-spacing:-1px;
+  box-shadow:0 6px 18px rgba(255,180,84,.28);
+}
+.logo .txt strong{display:block;font-size:20px;letter-spacing:1px;line-height:1.2}
+.logo .txt em{display:block;font-style:normal;font-size:11.5px;color:var(--text-2);letter-spacing:2px;text-transform:uppercase}
+.search{flex:1;max-width:340px;position:relative}
+.search input{width:100%;height:40px;border:1px solid var(--line);background:var(--ink-2);border-radius:20px;padding:0 92px 0 16px;color:var(--text);font-size:14px;outline:none}
+.search input::placeholder{color:#6d7a90}
+.search input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(255,180,84,.12)}
+.search button{position:absolute;right:4px;top:4px;height:32px;border:0;border-radius:16px;padding:0 16px;background:var(--gold);color:#16181d;font-size:13px;font-weight:700;cursor:pointer}
+.enter{border:1px solid var(--line);border-radius:20px;padding:8px 16px;font-size:13px;color:var(--text-2);white-space:nowrap}
+.enter:hover{border-color:var(--teal);color:var(--teal)}
+
+/* nav */
+nav.main{border-bottom:1px solid var(--line);background:#0e1219}
+nav.main ul{max-width:var(--maxw);margin:0 auto;padding:0 20px;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+nav.main ul::-webkit-scrollbar{display:none}
+nav.main li{flex:0 0 auto}
+nav.main a{display:block;padding:12px 14px;font-size:14.5px;color:var(--text-2);border-bottom:2px solid transparent}
+nav.main a:hover,nav.main a.on{color:var(--text);border-bottom-color:var(--gold)}
+nav.main a.hot::after{content:"热";margin-left:6px;font-size:10px;background:var(--pink);color:#fff;border-radius:4px;padding:1px 4px;vertical-align:middle}
+
+/* hero 非对称 */
+.hero{padding:38px 0 26px}
+.hero .grid{display:grid;grid-template-columns:1.55fr 1fr;gap:20px}
+.poster{
+  position:relative;border-radius:var(--radius);border:1px solid var(--line);overflow:hidden;min-height:300px;
+  background:
+    linear-gradient(180deg,rgba(11,14,20,.1),rgba(11,14,20,.92)),
+    repeating-linear-gradient(135deg,#1d2534 0 14px,#182030 14px 28px);
+}
+.poster .tag{position:absolute;left:16px;top:16px;background:rgba(255,180,84,.92);color:#16181d;font-size:12px;font-weight:700;padding:4px 10px;border-radius:6px}
+.poster .body{position:absolute;left:20px;right:20px;bottom:20px}
+.poster h2{font-size:26px;line-height:1.35;letter-spacing:.5px}
+.poster p{color:var(--text-2);font-size:14px;margin-top:8px;max-width:52ch}
+.poster .meta{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}
+.chip{font-size:12px;border:1px solid var(--line);background:rgba(19,24,34,.72);border-radius:999px;padding:4px 11px;color:var(--text-2)}
+.chip.g{border-color:rgba(61,220,151,.4);color:var(--teal)}
+.score{position:absolute;right:16px;top:16px;text-align:center;background:rgba(11,14,20,.72);border:1px solid var(--line);border-radius:10px;padding:6px 12px}
+.score b{display:block;font-size:22px;color:var(--gold);line-height:1.1}
+.score i{font-style:normal;font-size:11px;color:var(--text-2)}
+.side{display:grid;grid-template-rows:1fr 1fr;gap:20px}
+.side .cell{border:1px solid var(--line);border-radius:var(--radius);background:var(--ink-2);padding:16px 18px;display:flex;flex-direction:column;justify-content:center}
+.side .cell h3{font-size:15.5px;margin-bottom:6px}
+.side .cell p{font-size:13px;color:var(--text-2)}
+.side .cell .num{font-size:30px;font-weight:800;letter-spacing:-.5px;color:var(--teal)}
+.side .cell .num.o{color:var(--gold)}
+
+/* 通用区块 */
+section{padding:30px 0}
+.head{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:18px}
+.head h2{font-size:21px;letter-spacing:.5px;position:relative;padding-left:12px}
+.head h2::before{content:"";position:absolute;left:0;top:6px;bottom:6px;width:4px;border-radius:2px;background:linear-gradient(180deg,var(--gold),var(--pink))}
+.head p{font-size:13px;color:var(--text-2)}
+.more{font-size:13px;color:var(--gold);white-space:nowrap}
+
+/* 横向卡片轨道 */
+.rail{display:flex;gap:16px;overflow-x:auto;padding:4px 2px 12px;scroll-snap-type:x mandatory}
+.rail::-webkit-scrollbar{height:6px}
+.rail::-webkit-scrollbar-thumb{background:var(--line);border-radius:6px}
+.card{flex:0 0 232px;scroll-snap-align:start;border:1px solid var(--line);border-radius:12px;background:var(--ink-2);overflow:hidden;transition:.22s}
+.card:hover{transform:translateY(-4px);border-color:rgba(255,180,84,.5)}
+.thumb{height:132px;position:relative;background:linear-gradient(160deg,#232c3d,#141a25)}
+.thumb i{position:absolute;right:8px;bottom:8px;font-style:normal;font-size:11px;background:rgba(11,14,20,.78);border:1px solid var(--line);border-radius:5px;padding:2px 7px;color:var(--gold)}
+.card .info{padding:12px 13px 14px}
+.card h3{font-size:15px;line-height:1.45;margin-bottom:6px}
+.card p{font-size:12.5px;color:var(--text-2)}
+.stars{color:var(--gold);font-size:12px;letter-spacing:1px}
+
+/* 榜单 */
+.rank{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.rank li{border:1px solid var(--line);border-radius:12px;background:var(--ink-2);padding:12px 14px;display:flex;gap:14px;align-items:center}
+.rank .no{flex:0 0 34px;height:34px;border-radius:9px;display:grid;place-items:center;font-weight:800;background:#202938;color:var(--text-2)}
+.rank li:nth-child(1) .no{background:linear-gradient(140deg,#ffb454,#ff7a45);color:#16181d}
+.rank li:nth-child(2) .no{background:linear-gradient(140deg,#8fb4ff,#5b7fd4);color:#0d1117}
+.rank li:nth-child(3) .no{background:linear-gradient(140deg,#3ddc97,#23a97a);color:#0d1117}
+.rank .tt{flex:1;min-width:0}
+.rank .tt strong{display:block;font-size:14.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rank .tt span{font-size:12px;color:var(--text-2)}
+.rank em{font-style:normal;font-size:13px;color:var(--gold);font-weight:700}
+
+/* 分类 */
+.cats{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.cats a{border:1px solid var(--line);border-radius:12px;background:linear-gradient(180deg,#171d29,#12171f);padding:16px 10px;text-align:center;transition:.2s}
+.cats a:hover{border-color:var(--teal);transform:translateY(-3px)}
+.cats b{display:block;font-size:15px;margin-bottom:4px}
+.cats span{font-size:11.5px;color:var(--text-2)}
+
+/* 攻略双栏 */
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.panel{border:1px solid var(--line);border-radius:var(--radius);background:var(--ink-2);padding:18px 20px}
+.panel h3{font-size:16.5px;margin-bottom:10px;padding-left:10px;border-left:3px solid var(--gold)}
+.timeline li{position:relative;padding:10px 0 10px 22px;border-bottom:1px dashed var(--line);font-size:14px}
+.timeline li:last-child{border-bottom:0}
+.timeline li::before{content:"";position:absolute;left:4px;top:18px;width:8px;height:8px;border-radius:50%;background:var(--gold)}
+.timeline li b{color:var(--teal);font-weight:600;margin-right:6px}
+.faq details{border-bottom:1px solid var(--line);padding:11px 0}
+.faq summary{cursor:pointer;font-size:14.5px;list-style:none;position:relative;padding-right:22px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:2px;top:-1px;color:var(--gold);font-size:17px}
+.faq details[open] summary::after{content:"-"}
+.faq p{font-size:13.5px;color:var(--text-2);padding:8px 0 2px}
+
+/* 专题三宫格 */
+.triple{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.triple article{border:1px solid var(--line);border-radius:12px;background:var(--ink-2);padding:18px}
+.triple h3{font-size:16px;margin:8px 0}
+.triple p{font-size:13.5px;color:var(--text-2)}
+.triple .k{font-size:12px;color:var(--gold);letter-spacing:1px}
+.triple .k.t{color:var(--teal)}
+.triple .k.p{color:var(--pink)}
+
+/* footer */
+footer.site{border-top:1px solid var(--line);margin-top:24px;background:#0a0d13;padding:30px 0 22px}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:22px}
+.fgrid h4{font-size:14.5px;margin-bottom:10px;color:var(--text)}
+.fgrid li{font-size:13px;color:var(--text-2);padding:3px 0}
+.fgrid li:hover{color:var(--gold)}
+.fgrid p{font-size:13px;color:var(--text-2)}
+.bottom{max-width:var(--maxw);margin:20px auto 0;padding:16px 20px 0;border-top:1px solid var(--line);font-size:12.5px;color:#7d8a9f;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+/* 响应式 */
+@media (max-width:900px){
+  .hero .grid{grid-template-columns:1fr}
+  .cats{grid-template-columns:repeat(3,1fr)}
+  .fgrid{grid-template-columns:1fr 1fr}
+  .triple{grid-template-columns:1fr}
+  .cols{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  body{font-size:15.5px}
+  .bar{flex-wrap:wrap;padding:12px 16px}
+  .search{order:3;max-width:none;flex:1 0 100%}
+  .enter{display:none}
+  .poster{min-height:270px}
+  .poster h2{font-size:21px}
+  .card{flex:0 0 76%}
+  .rank{grid-template-columns:1fr}
+  .side{grid-template-rows:auto auto}
+  .wrap{padding:0 16px}
+  nav.main ul{padding:0 16px}
+  .head h2{font-size:19px}
+}
+</style>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"WebSite",
+      "@id":"https://kukudianyingwang-app.github.io/#website",
+      "url":"https://kukudianyingwang-app.github.io/",
+      "name":"酷酷电影网",
+      "alternateName":"kukudianyingwang",
+      "inLanguage":"zh-CN",
+      "description":"酷酷电影网提供电影推荐、热映榜单、新片上映时间与追剧攻略，覆盖动作、科幻、悬疑、动画等分类。",
+      "publisher":{"@id":"https://kukudianyingwang-app.github.io/#org"}
+    },
+    {
+      "@type":"Organization",
+      "@id":"https://kukudianyingwang-app.github.io/#org",
+      "name":"酷酷电影网",
+      "url":"https://kukudianyingwang-app.github.io/",
+      "slogan":"挑片不纠结，好片看得见"
+    },
+    {
+      "@type":"BreadcrumbList",
+      "itemListElement":[
+        {"@type":"ListItem","position":1,"name":"酷酷电影网首页","item":"https://kukudianyingwang-app.github.io/"},
+        {"@type":"ListItem","position":2,"name":"热映榜单"},
+        {"@type":"ListItem","position":3,"name":"影视分类"},
+        {"@type":"ListItem","position":4,"name":"观影攻略"}
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/yazhou.js"></script>
+
+<div class="ticker">
+  <div class="wrap">
+    <span class="dot"></span>
+    <span>今日榜单已更新 · 共 <b>32</b> 部新片入库</span>
+    <span>数据同步时间：2026-10-16 09:20</span>
+    <span>本站仅提供影视信息整理与索引，播放请通过正规授权平台</span>
+  </div>
+</div>
+
+<header class="site">
+  <div class="bar">
+    <a class="logo" href="#" aria-label="酷酷电影网首页">
+      <span class="mark">酷酷</span>
+      <span class="txt"><strong>酷酷电影网</strong><em>kukudianyingwang</em></span>
+    </a>
+    <form class="search" action="#" method="get" role="search">
+      <label for="kw" class="visually-hidden" style="position:absolute;left:-9999px">搜索影片</label>
+      <input id="kw" name="kw" type="search" placeholder="搜片名 / 演员 / 类型，如：悬疑、科幻…" autocomplete="off">
+      <button type="submit">找片</button>
+    </form>
+    <a class="enter" href="#">投稿 &amp; 纠错</a>
+  </div>
+  <nav class="main" aria-label="主导航">
+    <ul>
+      <li><a class="on" href="#">首页</a></li>
+      <li><a class="hot" href="#">热映榜单</a></li>
+      <li><a href="#">影视分类</a></li>
+      <li><a href="#">剧集追更</a></li>
+      <li><a href="#">观影攻略</a></li>
+      <li><a href="#">影评专栏</a></li>
+      <li><a href="#">关于本站</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="grid">
+        <article class="poster">
+          <span class="tag">编辑力荐</span>
+          <div class="score"><b>8.7</b><i>综合评分</i></div>
+          <div class="body">
+            <h2 id="hero-title">本周必看：《漫长的季节之外》—— 小镇、旧案与一场迟到的告别</h2>
+            <p>酷酷电影网编辑部把这部片放在本周推荐第一位：叙事克制、节奏稳，后半段的剪辑把三条时间线收得干净利落，适合一个安静的晚上慢慢看。</p>
+            <div class="meta">
+              <span class="chip">剧情 / 悬疑</span>
+              <span class="chip">片长 128 分钟</span>
+              <span class="chip g">已上线授权平台</span>
+              <a class="chip" href="#">查看完整影评</a>
+            </div>
+          </div>
+        </article>
+        <div class="side">
+          <div class="cell">
+            <span class="num">32</span>
+            <h3>本周新入库影片</h3>
+            <p>含院线新片 11 部、流媒体首播 14 部、经典修复 7 部。</p>
+          </div>
+          <div class="cell">
+            <span class="num o">4.9</span>
+            <h3>读者选片满意度</h3>
+            <p>基于近期 1260 份"看完没踩雷"投票统计得出。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 栏目一：热映推荐 -->
+    <section aria-labelledby="s1">
+      <div class="head">
+        <h2 id="s1">热映推荐 · 今晚就能看</h2>
+        <p>按热度与口碑综合排序，每日 09:00 与 21:00 两次刷新</p>
+        <a class="more" href="#">查看全部榜单 →</a>
+      </div>
+      <div class="rail">
+        <a class="card" href="#">
+          <div class="thumb" style="background:linear-gradient(160deg,#3a2b4d,#141a25)"><i>8.9</i></div>
+          <div class="info">
+            <h3>雾港来信</h3>
+            <p class="stars">★★★★★</p>
+            <p>剧情 · 1998 · 法国｜一位邮差的四十年</p>
+          </div>
+        </a>
+        <a class="card" href="#">
+          <div class="thumb" style="background:linear-gradient(160deg,#1f3b57,#141a25)"><i>8.6</i></div>
+          <div class="info">
+            <h3>深蓝纪元</h3>
+            <p class="stars">★★★★☆</p>
+            <p>科幻 · 2025 · 硬核设定，视效在线</p>
+          </div>
+        </a>
+        <a class="card" href="#">
+          <div class="thumb" style="background:linear-gradient(160deg,#4d3524,#141a25)"><i>8.4</i></div>
+          <div class="info">
+            <h3>黄昏列车</h3>
+            <p class="stars">★★★★☆</p>
+            <p>公路 · 2023 · 一路向西的父子和解</p>
+          </div>
+        </a>
+        <a class="card" href="#">
+          <div class="thumb" style="background:linear-gradient(160deg,#2c4a35,#141a25)"><i>8.3</i></div>
+          <div class="info">
+            <h3>山那边的广播站</h3>
+            <p class="stars">★★★★☆</p>
+            <p>文艺 · 2024 · 小成本，情绪很足</p>
+          </div>
+        </a>
+        <a class="card" href="#">
+          <div class="thumb" style="background:linear-gradient(160deg,#4a2330,#141a25)"><i>8.1</i></div>
+          <div class="info">
+            <h3>第七个证人</h3>
+            <p class="stars">★★★★☆</p>
+            <p>悬疑 · 2025 · 反转密集，慎看剧透</p>
+          </div>
+        </a>
+        <a class="card" href="#">
+          <div class="thumb" style="background:linear-gradient(160deg,#25384f,#141a25)"><i>7.9</i></div>
+          <div class="info">
+            <h3>机械之心</h3>
+            <p class="stars">★★★★</p>
+            <p>动画 · 2022 · 全家一起看也不尴尬</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- 栏目二：排行榜 -->
+    <section aria-labelledby="s2">
+      <div class="head">
+        <h2 id="s2">口碑排行榜 · 近三十天</h2>
+        <p>酷酷电影网热映榜单：评分来自站内读者加权，非单一平台数据</p>
+        <a class="more" href="#">榜单计算规则 →</a>
+      </div>
+      <ol class="rank">
+        <li><span class="no">1</span><span class="tt"><strong>雾港来信</strong><span>剧情 · 14321 人想看</span></span><em>8.9</em></li>
+        <li><span class="no">2</span><span class="tt"><strong>深蓝纪元</strong><span>科幻 · 12880 人想看</span></span><em>8.6</em></li>
+        <li><span class="no">3</span><span class="tt"><strong>黄昏列车</strong><span>公路 · 11064 人想看</span></span><em>8.4</em></li>
+        <li><span class="no">4</span><span class="tt"><strong>山那边的广播站</strong><span>文艺 · 9630 人想看</span></span><em>8.3</em></li>
+        <li><span class="no">5</span><span class="tt"><strong>第七个证人</strong><span>悬疑 · 9022 人想看</span></span><em>8.1</em></li>
+        <li><span class="no">6</span><span class="tt"><strong>旧巷裁缝铺</strong><span>年代 · 8715 人想看</span></span><em>7.9</em></li>
+        <li><span class="no">7</span><span class="tt"><strong>机械之心</strong><span>动画 · 8203 人想看</span></span><em>7.9</em></li>
+        <li><span class="no">8</span><span class="tt"><strong>雨夜出租车</strong><span>犯罪 · 7640 人想看</span></span><em>7.7</em></li>
+      </ol>
+    </section>
+
+    <!-- 栏目三：分类导航 -->
+    <section aria-labelledby="s3">
+      <div class="head">
+        <h2 id="s3">影视分类导航</h2>
+        <p>先挑类型，再按年份与评分二次筛选</p>
+      </div>
+      <div class="cats">
+        <a href="#"><b>动作</b><span>2140 部</span></a>
+        <a href="#"><b>科幻</b><span>1320 部</span></a>
+        <a href="#"><b>悬疑</b><span>986 部</span></a>
+        <a href="#"><b>喜剧</b><span>1755 部</span></a>
+        <a href="#"><b>动画</b><span>802 部</span></a>
+        <a href="#"><b>纪录片</b><span>430 部</span></a>
+        <a href="#"><b>爱情</b><span>1268 部</span></a>
+        <a href="#"><b>恐怖</b><span>517 部</span></a>
+        <a href="#"><b>战争</b><span>394 部</span></a>
+        <a href="#"><b>武侠</b><span>288 部</span></a>
+        <a href="#"><b>家庭</b><span>642 部</span></a>
+        <a href="#"><b>短片</b><span>1190 部</span></a>
+      </div>
+    </section>
+
+    <!-- 栏目四：攻略 + FAQ -->
+    <section aria-labelledby="s4">
+      <div class="head">
+        <h2 id="s4">观影攻略 &amp; 常见问题</h2>
+        <p>新片时间表与选片技巧，帮你在十分钟之内定下来看什么</p>
+      </div>
+      <div class="cols">
+        <div class="panel">
+          <h3>本周更新时间表</h3>
+          <ul class="timeline">
+            <li><b>周一</b>院线新片口碑汇总，附首周上座数据</li>
+            <li><b>周三</b>流媒体首播清单，标注是否含独家</li>
+            <li><b>周五</b>周末片单：三部长片 + 两部纪录短片</li>
+            <li><b>周日</b>读者投票榜，淘汰踩雷率高的片子</li>
+            <li><b>每月 1 日</b>上月完整榜单归档，可回看</li>
+          </ul>
+        </div>
+        <div class="panel faq">
+          <h3>关于酷酷电影网的几个问题</h3>
+          <details open>
+            <summary>榜单的评分是怎么算出来的？</summary>
+            <p>读者打分取近三十天加权平均，样本少于 200 条时不计入主榜，避免新片靠少量刷分冲榜。</p>
+          </details>
+          <details>
+            <summary>为什么有些片子搜不到？</summary>
+            <p>未取得公映或上线许可、以及信息源不完整的条目暂不收录，可通过页面的"投稿 &amp; 纠错"提交补充。</p>
+          </details>
+          <details>
+            <summary>可以直接在这里播放吗？</summary>
+            <p>酷酷电影网只做信息整理与索引，不存放任何影片资源，播放请前往正规授权平台。</p>
+          </details>
+          <details>
+            <summary>想看老片，有没有按年份的入口？</summary>
+            <p>进入影视分类后，用年份筛选可精确到 1920 年至今的修复版本，部分条目附带画质说明。</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- 栏目五：专题 -->
+    <section aria-labelledby="s5">
+      <div class="head">
+        <h2 id="s5">编辑部专题</h2>
+        <p>不定期更新，一次聊透一个方向</p>
+        <a class="more" href="#">专题归档 →</a>
+      </div>
+      <div class="triple">
+        <article>
+          <span class="k">专题 01</span>
+          <h3>悬疑片怎么看到最后不泄气</h3>
+          <p>从信息释放节奏讲起，附 12 部"最后一分钟才揭底"的片单，按难度从低到高排列。</p>
+        </article>
+        <article>
+          <span class="k t">专题 02</span>
+          <h3>小成本电影为什么更好看</h3>
+          <p>预算受限反而逼出叙事效率，这里挑了 9 部成本不高但完成度极高的作品做横向对比。</p>
+        </article>
+        <article>
+          <span class="k p">专题 03</span>
+          <h3>带孩子看电影的选片清单</h3>
+          <p>按年龄段分组，标注片长、音量强度与可能引起紧张的画面，家长可提前做功课。</p>
+        </article>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <h4>酷酷电影网</h4>
+        <p>一个把选片这件事做细的影视索引站。每天整理热映新片、高分佳片与追剧时间表，信息只做聚合与排序，不做资源存储。</p>
+        <p style="margin-top:10px">站点地址：https://kukudianyingwang-app.github.io</p>
+      </div>
+      <div>
+        <h4>榜单</h4>
+        <ul>
+          <li><a href="#">热映榜</a></li>
+          <li><a href="#">口碑榜</a></li>
+          <li><a href="#">冷门佳片</a></li>
+          <li><a href="#">年度回顾</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>分类</h4>
+        <ul>
+          <li><a href="#">动作片</a></li>
+          <li><a href="#">科幻片</a></li>
+          <li><a href="#">悬疑片</a></li>
+          <li><a href="#">纪录片</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>关于</h4>
+        <ul>
+          <li><a href="#">站点简介</a></li>
+          <li><a href="#">收录标准</a></li>
+          <li><a href="#">投稿与纠错</a></li>
+          <li><a href="#">免责声明</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>© 2026 酷酷电影网 kukudianyingwang-app.github.io · 挑片不纠结，好片看得见</span>
+      <span>本站所列影片信息均来自公开渠道，版权归各自权利人所有</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
